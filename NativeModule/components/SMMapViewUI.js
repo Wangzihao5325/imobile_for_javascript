@@ -137,9 +137,6 @@ class SMMapView extends React.Component{
     }
 
     static propTypes = {
-        onGetInstance:React.PropTypes.func,
-        callouts:React.PropTypes.array,
-        addCalloutByLongPress:React.PropTypes.bool,
         ...ViewPropTypes,
     };
 

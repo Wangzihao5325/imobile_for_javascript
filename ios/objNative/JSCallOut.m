@@ -54,11 +54,14 @@ RCT_REMAP_METHOD(createObjWithStyle,createObjWithMapControlId:(NSString*)mapCont
 
 RCT_REMAP_METHOD(showAtPoint2d,showByCalloutId:(NSString*)calloutId point2dId:(NSString*)point2dId resolver:(RCTPromiseResolveBlock)resolve rejecter:(RCTPromiseRejectBlock)reject){
     @try {
-        dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_HIGH, 2), ^{
-            Callout * callout = [JSObjManager getObjWithKey:calloutId];
-            Point2D *point2d = [JSObjManager getObjWithKey:point2dId];
-            [callout showAt:point2d];
-        });
+//        dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_HIGH, 2), ^{
+//            Callout * callout = [JSObjManager getObjWithKey:calloutId];
+//            Point2D *point2d = [JSObjManager getObjWithKey:point2dId];
+//            [callout showAt:point2d];
+//        });
+        Callout * callout = [JSObjManager getObjWithKey:calloutId];
+                    Point2D *point2d = [JSObjManager getObjWithKey:point2dId];
+                    [callout showAt:point2d];
     } @catch (NSException *exception) {
         reject(@"Callout",@"show at point2d failed.",nil);
     }

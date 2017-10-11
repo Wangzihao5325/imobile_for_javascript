@@ -5,6 +5,7 @@
  Description:N/A
  
  **********************************************************************************/
+import React, { Component } from 'react';
 import {NativeModules} from 'react-native';
 let C = NativeModules.JSCallOut;
 
@@ -32,9 +33,9 @@ export default class CallOut {
     async createObj(mapCtrl,colorArr,alignment){
         try{
             if(arguments.length === 1){
-              var {_SMCalloutId} = await C.createObj(mapCtrl.mapControlId);
+              var {_SMCalloutId} = await C.createObj(mapCtrl._SMMapControlId);
             }else if(arguments.length === 3){
-              var {_SMCalloutId} = await C.createObjWithStyle(mapCtrl.mapControlId,colorArr,alignment);
+              var {_SMCalloutId} = await C.createObjWithStyle(mapCtrl._SMMapControlId,colorArr,alignment);
             }else{
                 throw new Error('input param number should be 1 or 3,please check your params');
             }
@@ -54,7 +55,7 @@ export default class CallOut {
      */
     async showAtPoint2d(point2D){
         try{
-            await C.showAtPoint2d(this._SMCalloutId,point2D.point2DId);
+            await C.showAtPoint2d(this._SMCalloutId,point2D._SMPoint2DId);
         }catch (e){
             console.error(e);
         }
